@@ -1,0 +1,21 @@
+name: Clone and List Files
+
+on:
+  push:
+    branches: []
+    #branches-ignore: []
+
+  workflow_dispatch:
+  
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  cloning:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: List files
+        run: ls -lart
