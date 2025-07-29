@@ -1,0 +1,29 @@
+name: Matrix Test on Node.js Versions
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14, 16, 18]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Print Node.js Version
+        run: node -v
+
+      - name: Test on Node.js ${{ matrix.node }}
+        run: echo "✅ Testing on Node.js ${{ matrix.node }}"
