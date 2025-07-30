@@ -1,4 +1,4 @@
-name: Combined Inputs, Env, and Secrets
+name: Combined Inputs, Env, Secrets, and Variables
 
 on:
   workflow_dispatch:
@@ -13,8 +13,10 @@ jobs:
     env:
       DEPLOY_ENV: staging
     steps:
-      - name: Show input and env
+      - name: Show input, env, and variables
         run: |
           echo "Service: ${{ github.event.inputs.service }}"
           echo "Env: $DEPLOY_ENV"
           echo "Token: ${{ secrets.DEPLOY_TOKEN }}"
+          echo "Org Variable: ${{ vars.ORGANIZATION_NAME }}"
+          echo "Repo Variable: ${{ vars.REPO_CONFIG }}"
