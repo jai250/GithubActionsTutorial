@@ -1,0 +1,31 @@
+name: Selective Job Runner
+on:
+  workflow_dispatch:
+    inputs:
+      job_to_run:
+        description: 'Which job to run (job1, job2, job3)'
+        required: true
+        type: choice
+        options:
+          - job1
+          - job2
+          - job3
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.job_to_run == 'job1' }}
+    steps:
+      - run: echo "Running Job 1"
+
+  job2:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.job_to_run == 'job2' }}
+    steps:
+      - run: echo "Running Job 2"
+
+  job3:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.job_to_run == 'job3' }}
+    steps:
+      - run: echo "Running Job 3"
