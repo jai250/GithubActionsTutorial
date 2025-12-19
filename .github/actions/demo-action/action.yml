@@ -5,9 +5,6 @@ inputs:
     description: 'Name to greet'
     required: false
     default: 'World'
-outputs:
-  'demo-output':
-    description: 'Output from the demo action'
 runs:
   using: 'composite'
   steps:
@@ -15,5 +12,6 @@ runs:
       run: echo "Hello, ${{ inputs.name }}!"
       shell: bash
     - name: Set output
-      run: echo "::set-output name=demo-output::Action executed successfully"
+      run: |
+        echo "demo-output=Action executed successfully" >> $GITHUB_OUTPUT
       shell: bash
