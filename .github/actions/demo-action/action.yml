@@ -5,6 +5,9 @@ inputs:
     description: 'Name to greet'
     required: false
     default: 'World'
+outputs:
+  demo-output:
+    description: 'Output from the demo action'
 runs:
   using: 'composite'
   steps:
