@@ -16,8 +16,8 @@ runs:
       run: echo "Hello, ${{ inputs.name }}!"
       shell: bash
     
-    - id: set_output
-      name: Set output
+    - name: Set output
+      id: set_output
       run: |
         echo "result=Action executed successfully" >> $GITHUB_OUTPUT
       shell: bash
